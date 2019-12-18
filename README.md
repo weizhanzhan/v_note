@@ -16,9 +16,15 @@
 #### 推荐
 - <a href="https://github.com/weizhanzhan/v_note/issues/2">记录开发qunar webapp的注意事项</a>
 - <a href="https://github.com/weizhanzhan/v_note/issues?q=is%3Aopen+is%3Aissue+project%3Aweizhanzhan%2Fv_note%2F2">更多...</a>
+### 收藏面试题以及技巧
+
+- <a href="https://github.com/weizhanzhan/v_note/issues/3">vue面试题整理</a>
 
 ### 难点及bug整理
+
 - <a href="https://github.com/weizhanzhan/v_note/issues/3">vue-electron脚手架进行正常操作vuex时无反应和报错 </a>
+
 ### 总结归纳
-- <a href="https://github.com/weizhanzhan/v_note/issues/1">1. 2019的回顾</a>
+
+- <a href="https://github.com/weizhanzhan/v_note/issues/1">2019的回顾</a>
 - <a href="https://github.com/weizhanzhan/v_note/issues?q=is%3Aopen+is%3Aissue+project%3Aweizhanzhan%2Fv_note%2F1">更多...</a>
