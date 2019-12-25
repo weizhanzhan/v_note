@@ -7,13 +7,21 @@ const Container = styled.div`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding-top:24px
+    padding-top:24px;
+    .banner{
+        margin-bottom:16px
+        img{
+            width:100%;
+            height:150px;
+            border-radius:6px
+        }
+    }
 `
-const Left = styled.div`
+const Right = styled.div`
     max-width:735px;
     width:735px
 `
-const Right = styled.div`
+const Left = styled.div`
     flex:1
 `
 const Title = styled.h4`
@@ -41,8 +49,50 @@ const Description =styled.div`
 
 `
 const Section = styled.div`
-    h5{
-        font-weight:bold
+    .tech-title{
+        
+        color: #212121;
+        position: relative;
+        display: inline-block;
+        padding-bottom:10px;
+        &::after{
+            position: absolute;
+            content: '';
+            border-bottom: 1px solid #eee;
+            width: 125px;
+            margin-left: 5px;
+            margin-top: 8px;
+        }
+    }
+    .tech-item{
+        height: 34px;
+        display: flex;
+        align-items: center;
+        color: #757575;
+        text-decoration: none;
+        margin-bottom: 1px;
+        border-radius: 4px;
+        &:hover{
+            background:rgb(236,247,243)
+        }
+        span{
+            padding-left:8px
+        }
+        &.end{
+            margin-bottom:12px
+        }
+    }
+    .about{
+        margin-top:8px
+    }
+    .about-item{
+       margin-right:12px ;
+       font-size:20px
+    }
+    .website{
+        color:#909399;
+        font-size:14px;
+        padding-top:14px
     }
 `
 export default {

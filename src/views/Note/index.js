@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { $fetch } from '../../utils/fetch'
 import NoteStyle from './style'
 import marked from 'marked'
+import Banner from '../../assets/img/350.jpg'
 function Note (props) {
   const [note,setNote] = useState([])
   useEffect(()=>{
@@ -16,6 +17,89 @@ function Note (props) {
   return (
     <NoteStyle.Container>
       <NoteStyle.Left>
+        <NoteStyle.Section>
+          <h5 className="tech-title">栏目</h5>
+          <div className="tech-item">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-Vue"></use>
+            </svg>
+            <span>Vue</span>
+          </div>
+          <div className="tech-item">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-React"></use>
+            </svg>
+            <span>React</span>
+          </div>
+          <div className="tech-item">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-csswizardry-copy"></use>
+            </svg>
+            <span>CSS</span>
+          </div>
+          <div className="tech-item">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-JavaScript"></use>
+            </svg>
+            <span>Javascript</span>
+          </div>
+          <div className="tech-item">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-file_type_flutter"></use>
+            </svg>
+            <span>Flutter</span>
+          </div>
+          <div className="tech-item">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-bug"></use>
+            </svg>
+            <span>Bug</span>
+          </div>
+          <div className="tech-item end">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-zongjie"></use>
+            </svg>
+            <span>总结</span>
+          </div>
+          <h5 className="tech-title">关于我</h5>
+          <div className="about">
+            <svg className="icon about-item" aria-hidden="true">
+                <use xlinkHref="#icon-QQ"></use>
+            </svg>
+            <svg className="icon about-item" aria-hidden="true">
+                <use xlinkHref="#icon-weixin"></use>
+            </svg>
+            <svg className="icon about-item" aria-hidden="true">
+                <use xlinkHref="#icon-git"></use>
+            </svg>
+          </div>
+          <div className="website">
+          {/* © 2019 weizhanzhan */}
+          </div>
+          {/* <div className="tech-item">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-QQ"></use>
+            </svg>
+            <span>QQ</span>
+          </div>
+          <div className="tech-item">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-weixin"></use>
+            </svg>
+            <span>微信</span>
+          </div>
+          <div className="tech-item">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-git"></use>
+            </svg>
+            <span>Github</span>
+          </div> */}
+        </NoteStyle.Section>
+      </NoteStyle.Left>
+      <NoteStyle.Right>
+        {/* <div className="banner">
+          <img alt='' src={Banner}></img>
+        </div> */}
         <ul>
           { 
             note.map(n=>{
@@ -32,53 +116,6 @@ function Note (props) {
             })
           }
         </ul>
-      </NoteStyle.Left>
-      <NoteStyle.Right>
-        <NoteStyle.Section>
-          <h5>技术专栏</h5>
-          <div>
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-Vue"></use>
-            </svg>
-            <span>react</span>
-          </div>
-          <div>
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-React"></use>
-            </svg>
-            <span>react</span>
-          </div>
-          <div>
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-csswizardry-copy"></use>
-            </svg>
-            <span>CSS</span>
-          </div>
-          <div>
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-csswizardry-copy"></use>
-            </svg>
-            <span>Javascript</span>
-          </div>
-          <div>
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-file_type_flutter"></use>
-            </svg>
-            <span>Flutter</span>
-          </div>
-          <div>
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-bug"></use>
-            </svg>
-            <span>Bug</span>
-          </div>
-          <div>
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-zongjie"></use>
-            </svg>
-            <span>总结</span>
-          </div>
-        </NoteStyle.Section>
       </NoteStyle.Right>
     </NoteStyle.Container>
   )

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { renderRoutes } from "react-router-config";
-import { Container, Top, Header, Logo, Main ,Avatar , RightInfo} from './style';
+import { Container, Top, Header, Logo, Main, Avatar, RightInfo, Footer} from './style';
 import { $fetch } from '../../utils/fetch'
 
 
@@ -18,11 +18,11 @@ function Home (props) {
     <Container>
       <Header>
         <Top>
-          <Logo>
+          {/* <Logo>
             <img alt="" src="http://test1.zlpfs.com/ico.png" />
-          </Logo>
+          </Logo> */}
           <RightInfo onClick={()=>handleClick(location)}>
-            <span style={{color:'#909399'}}>{info.name}</span>
+            <span style={{color:'#ffffff'}}>{info.name}</span>
             <Avatar alt='' src={info.avatarUrl}></Avatar>
           </RightInfo>
         </Top>
@@ -31,7 +31,9 @@ function Home (props) {
         {/* 二级路由 */}
         { renderRoutes (route.routes) }
       </Main>
-     
+      <Footer>
+        <div>© 2019 weizhanzhan</div>
+      </Footer>
     </Container>
   )
 }

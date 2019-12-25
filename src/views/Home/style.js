@@ -5,17 +5,20 @@ const Container = styled.div`
     height:100%
 `
 const Header = styled.header`
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
+  
     background: #fff;
     border-bottom: 1px solid rgba(0,0,0,.15);
+    height:400px;
+    background: url(https://s1.tuchong.com/content-image/201807/b044184145124818f7d26c75e796829f.jpeg);
+    background-size: cover;
+    background-position: center;
+   
+
 `
 const Top = styled.div`
     margin: 0 auto;
     width: 100%;
+    height:100%;
     max-width: 935px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -40,21 +43,33 @@ const Logo = styled.div`
 `
 const Main = styled.main`
     width:100%;
-    margin-top:60px
+  
    
 `
 
 const Avatar = styled.img`
     margin-left: 15px;
-    width: 36px;
-    height: 36px;
-    border-radius: 36px;
-    border: 1px solid #dcdfe6
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #ffffff
 `
 const RightInfo = styled.div`
     display: flex;
-    align-items: center;
+    align-items:center;
+    position:absolute;
+    bottom:50px;
+    right:0;
+    font-size:20px;
+    font-weight: bold;
     `
+const Footer = styled.div`
+    width:100%;
+    text-align:center;
+    color:#909399;
+    padding:10px 0;
+    font-size:14px
+`
 export {
     Container,
     Top,
@@ -62,5 +77,6 @@ export {
     Logo,
     Main,
     Avatar,
-    RightInfo
+    RightInfo,
+    Footer
 }
