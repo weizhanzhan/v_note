@@ -83,6 +83,13 @@
       "unicode_decimal": 59067
     },
     {
+      "icon_id": "3703072",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
       "icon_id": "3876070",
       "name": "csswizardry",
       "font_class": "csswizardry",
@@ -419,6 +426,13 @@
       "unicode_decimal": 59195
     },
     {
+      "icon_id": "7473397",
+      "name": "github",
+      "font_class": "git",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
       "icon_id": "9271689",
       "name": "file_type_flutter",
       "font_class": "file_type_flutter",
@@ -552,11 +566,25 @@
       "unicode_decimal": 58928
     },
     {
+      "icon_id": "10140597",
+      "name": "QQ",
+      "font_class": "QQ",
+      "unicode": "e793",
+      "unicode_decimal": 59283
+    },
+    {
       "icon_id": "10263864",
       "name": "Flutter",
       "font_class": "Flutter",
       "unicode": "f55a",
       "unicode_decimal": 62810
+    },
+    {
+      "icon_id": "10464645",
+      "name": "点赞",
+      "font_class": "diancai1-copy",
+      "unicode": "e617",
+      "unicode_decimal": 58903
     },
     {
       "icon_id": "10784853",

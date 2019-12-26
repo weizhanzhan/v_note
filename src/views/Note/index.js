@@ -2,18 +2,19 @@ import React,{useState,useEffect} from 'react';
 import { $fetch } from '../../utils/fetch'
 import NoteStyle from './style'
 import marked from 'marked'
-import Banner from '../../assets/img/350.jpg'
+
 function Note (props) {
   const [note,setNote] = useState([])
-  useEffect(()=>{
-    async function fetchData() {
-      const notes = await getNotes()
-      console.log(notes)
-      setNote(notes)
-    }
-    fetchData();
+  const [endCursor,setEndCursor] = useState('') 
+  // useEffect(()=>{
+  //   async function fetchData() {
+  //     const notes = await getNotes(endCursor)
+  //     setNote(notes.articles)
+  //     setEndCursor(notes.endCursor)
+  //   }
+  //   fetchData();
    
-  },[])
+  // },[endCursor])
   return (
     <NoteStyle.Container>
       <NoteStyle.Left>
@@ -55,13 +56,20 @@ function Note (props) {
             </svg>
             <span>Bug</span>
           </div>
-          <div className="tech-item end">
+          <div className="tech-item ">
             <svg className="icon" aria-hidden="true">
                 <use xlinkHref="#icon-zongjie"></use>
             </svg>
             <span>总结</span>
           </div>
+          <div className="tech-item end">
+            <svg className="icon" aria-hidden="true">
+                <use xlinkHref="#icon-comment"></use>
+            </svg>
+           <span>说点什么...</span>
+         </div>
           <h5 className="tech-title">关于我</h5>
+         
           <div className="about">
             <svg className="icon about-item" aria-hidden="true">
                 <use xlinkHref="#icon-QQ"></use>
@@ -72,34 +80,10 @@ function Note (props) {
             <svg className="icon about-item" aria-hidden="true">
                 <use xlinkHref="#icon-git"></use>
             </svg>
-          </div>
-          <div className="website">
-          {/* © 2019 weizhanzhan */}
-          </div>
-          {/* <div className="tech-item">
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-QQ"></use>
-            </svg>
-            <span>QQ</span>
-          </div>
-          <div className="tech-item">
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-weixin"></use>
-            </svg>
-            <span>微信</span>
-          </div>
-          <div className="tech-item">
-            <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-git"></use>
-            </svg>
-            <span>Github</span>
-          </div> */}
+          </div>  
         </NoteStyle.Section>
       </NoteStyle.Left>
       <NoteStyle.Right>
-        {/* <div className="banner">
-          <img alt='' src={Banner}></img>
-        </div> */}
         <ul>
           { 
             note.map(n=>{
@@ -111,11 +95,21 @@ function Note (props) {
                   <NoteStyle.Description>
                     {handleContent(n.content)}
                   </NoteStyle.Description>
+                  <div>
+                    <div className="star-contaienr">
+                      <span className="star-box"><i className="iconfont icon-diancai1-copy star"></i></span>
+                      {  n.reactions ? <span className="star-count">{n.reactions}</span> :'' }
+                      <span className="star-word">赞</span>
+                    </div>
+                  </div>
                 </li>
               )
             })
           }
         </ul>
+        <div className="load-more">
+          <div className="btn">更多...</div>
+        </div>
       </NoteStyle.Right>
     </NoteStyle.Container>
   )
@@ -124,7 +118,7 @@ function Note (props) {
 const GetArticles = (nextPage) => `
 {
   repository(owner: "weizhanzhan", name: "v_note") {
-    issues(${nextPage} filterBy: {createdBy: "weizhanzhan",states: OPEN}, orderBy: {field: CREATED_AT, direction: DESC}, first: 100) {
+    issues(${nextPage} filterBy: {createdBy: "weizhanzhan",states: OPEN}, orderBy: {field: CREATED_AT, direction: DESC}, first: 2) {
       pageInfo {
         hasNextPage
         endCursor
@@ -181,7 +175,10 @@ function getNotes(nextCursor){
         commentsAmount: article.comments.totalCount,
         reactions: article.reactions.totalCount
       }))
-      resolve(articles)
+      resolve({
+        articles,
+        endCursor:data.data.repository.issues.pageInfo.endCursor
+      })
       // if (nextCursor) {
       //   commit('ADD_ARTICLES', articles)
       // } else {

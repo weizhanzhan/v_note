@@ -19,7 +19,57 @@ const Container = styled.div`
 `
 const Right = styled.div`
     max-width:735px;
-    width:735px
+    width:735px;
+    .star-contaienr{
+        margin-top:8px;
+        display:inline-block;
+        margin-bottom:24px
+        &:hover{
+            cursor:pointer;
+            .star-box{
+                background:rgba(1,126,102,0.8);
+                color:#ffffff;
+                .star{
+                    color:#ffffff; 
+                }
+            }
+        }
+        .star-box{
+            display:inline-block;
+            width:20px;
+            height:20px;
+            text-align:center;
+            line-height:1;
+            border-radius:50%;
+            background:rgba(1,126,102,0.18);
+            margin-right: 8px;
+          
+            .star{
+                color:#009a61;
+                font-size:14px
+            }
+        }
+        .star-count{
+            font-size:13px;
+            color: #009a61;
+            font-weight: bold;
+            &::before{
+                content: 'x ';
+                font-size: 12px;
+            }
+            &::after{
+                content: '·';
+                color: #999;
+                font-weight: normal;
+                padding:0 5px
+            }
+        }
+        .star-word{
+            font-size:13px;
+        }
+    }
+    
+   
 `
 const Left = styled.div`
     flex:1
@@ -36,7 +86,7 @@ const Title = styled.h4`
 `
 const Description =styled.div`
     margin-top:5px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -73,7 +123,8 @@ const Section = styled.div`
         margin-bottom: 1px;
         border-radius: 4px;
         &:hover{
-            background:rgb(236,247,243)
+            background:rgb(236,247,243);
+            cursor:pointer
         }
         span{
             padding-left:8px

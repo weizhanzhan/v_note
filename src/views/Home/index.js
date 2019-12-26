@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { renderRoutes } from "react-router-config";
-import { Container, Top, Header, Logo, Main, Avatar, RightInfo, Footer} from './style';
+import { Container, Top, Header, Main, Avatar, RightInfo, Footer} from './style';
 import { $fetch } from '../../utils/fetch'
 
 
@@ -18,9 +18,6 @@ function Home (props) {
     <Container>
       <Header>
         <Top>
-          {/* <Logo>
-            <img alt="" src="http://test1.zlpfs.com/ico.png" />
-          </Logo> */}
           <RightInfo onClick={()=>handleClick(location)}>
             <span style={{color:'#ffffff'}}>{info.name}</span>
             <Avatar alt='' src={info.avatarUrl}></Avatar>
