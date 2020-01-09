@@ -1,5 +1,4 @@
 import styled from'styled-components';
-// import style from '../../assets/global-style';
 const Container = styled.div`
     width:100%;
     height:100%
@@ -68,6 +67,7 @@ const Footer = styled.div`
     text-align:center;
     color:#909399;
     padding:10px 0;
+    margin-top:30px;
     font-size:14px
 `
 export {

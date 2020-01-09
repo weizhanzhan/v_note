@@ -1,5 +1,5 @@
 import styled from'styled-components';
-
+import GlobalStyle from '../../assets/global-style';
 const Container = styled.div`
     margin: 0 auto;
     width: 100%;
@@ -42,16 +42,15 @@ const Right = styled.div`
             line-height:1;
             border-radius:50%;
             background:rgba(1,126,102,0.18);
-            margin-right: 8px;
-          
+            margin-right: 8px;          
             .star{
-                color:#009a61;
+                color:${GlobalStyle['theme-color']};
                 font-size:14px
             }
         }
         .star-count{
             font-size:13px;
-            color: #009a61;
+            color: ${GlobalStyle['theme-color']};
             font-weight: bold;
             &::before{
                 content: 'x ';
@@ -68,8 +67,47 @@ const Right = styled.div`
             font-size:13px;
         }
     }
-    
-   
+    .loading4{
+        width:150px;
+        margin:50px auto;
+        text-align: center;
+    }
+    .loading-more >div{
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      display:inline-block;
+      background-color: ${GlobalStyle['theme-color']};
+      -webkit-animation: three 1.4s infinite ease-in-out;
+      animation: three 1.4s infinite ease-in-out;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+    .loading-more .three1{
+      -webkit-animation-delay: -0.30s;
+      animation-delay: -0.30s;
+    }
+    .loading-more .three2{
+      -webkit-animation-delay: -0.15s;
+      animation-delay: -0.15s;
+    }
+    @-webkit-keyframes three {
+      0%, 80%, 100% {-webkit-transform: scale(0.0) }
+      40% { -webkit-transform: scale(1.0) }
+    }
+    @keyframes three {
+      0%, 80%, 100% {-webkit-transform: scale(0.0) }
+      40% { -webkit-transform: scale(1.0) }
+    }
+    .load-more{
+        text-align:center;
+        font-size:14px;
+        color:#909399;  
+        .btn{
+            cursor:pointer;        
+            padding:10px;      
+        }
+    }   
 `
 const Left = styled.div`
     flex:1
@@ -146,11 +184,17 @@ const Section = styled.div`
         padding-top:14px
     }
 `
+
+const NoteDetail = styled.div`
+    width:900px;
+    margin:0 auto
+`
 export default {
     Container,
     Left,
     Right,
     Title,
     Description,
-    Section
+    Section,
+    NoteDetail
 }

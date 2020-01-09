@@ -2,19 +2,55 @@ import React,{useState,useEffect} from 'react';
 import { $fetch } from '../../utils/fetch'
 import NoteStyle from './style'
 import marked from 'marked'
+import ContentLoader from 'react-content-loader'
+// primaryColor="#f3f3f3"
+// secondaryColor="#ecebeb"
+const MyLoader = () => (
+  <ContentLoader 
+    height={60}
+    width={400}
+    speed={2}
+    primaryColor="#f3f3f3"
+    secondaryColor="#ecebeb"
+  >
+    <rect x="0" y="6" rx="4" ry="4" width="238" height="9" /> 
+    <rect x="0" y="20" rx="3" ry="3" width="339" height="7" /> 
+    <rect x="0" y="31" rx="3" ry="3" width="340" height="7" /> 
+    <rect x="474" y="-57" rx="3" ry="3" width="380" height="6" /> 
+    <rect x="20" y="46" rx="3" ry="3" width="105" height="7" /> 
+    <circle cx="631" cy="-63" r="30" /> 
+    <circle cx="8" cy="49" r="8" /> 
+    <circle cx="54" cy="92" r="1" /> 
+    <circle cx="92" cy="88" r="0" />
+  </ContentLoader>
+)
+
+const Loadmore = () => (
+  <div className="loading-more">
+    <div className="three1"></div>
+    <div className="three2"></div>
+    <div className="three3"></div>
+  </div>
+)
 
 function Note (props) {
+    // props.history.push('/note-info/123')
   const [note,setNote] = useState([])
   const [endCursor,setEndCursor] = useState('') 
-  // useEffect(()=>{
-  //   async function fetchData() {
-  //     const notes = await getNotes(endCursor)
-  //     setNote(notes.articles)
-  //     setEndCursor(notes.endCursor)
-  //   }
-  //   fetchData();
-   
-  // },[endCursor])
+  const [hasNextPage,setHasNextPage] = useState(false)
+  const [loading,setLoading] = useState(false)
+  const [loadmore,setLoadmore] = useState(false)
+  useEffect(()=>{
+    async function fetchData() {
+      setLoading(true)
+      const notes = await getNotes()
+      setLoading(false)
+      setNote(notes.articles)
+      setEndCursor(notes.endCursor)
+      setHasNextPage(notes.hasNextPage)
+    }
+    fetchData(); 
+  },[note.hasNextPage])
   return (
     <NoteStyle.Container>
       <NoteStyle.Left>
@@ -85,10 +121,23 @@ function Note (props) {
       </NoteStyle.Left>
       <NoteStyle.Right>
         <ul>
+          {
+            loading ? 
+             <li>
+               <MyLoader/>
+               <MyLoader/>
+               <MyLoader/>
+               <MyLoader/>
+               <MyLoader/>
+             </li> :''
+          }
+         
           { 
             note.map(n=>{
               return (
-                <li key={n.id}>
+                <li key={n.id} onClick={()=>{
+                  props.history.push('/note-info/'+n.number)
+                }}>
                   <NoteStyle.Title>
                     {n.title}
                   </NoteStyle.Title>
@@ -108,7 +157,24 @@ function Note (props) {
           }
         </ul>
         <div className="load-more">
-          <div className="btn">更多...</div>
+          {
+             hasNextPage?<div className="btn" onClick={ async ()=>{
+            if(hasNextPage){
+              setLoadmore(true)
+              const notes = await getNotes(endCursor)
+              setLoadmore(false)
+              const {hasNextPage, articles} = notes        
+              setNote([...note,...articles])     
+              setEndCursor(notes.endCursor)
+              setHasNextPage(hasNextPage)
+            }   
+          }}>
+            {
+              loadmore? <Loadmore/>:'更多...'
+            } 
+          </div>
+          :<div>暂无...</div>
+        }
         </div>
       </NoteStyle.Right>
     </NoteStyle.Container>
@@ -118,7 +184,7 @@ function Note (props) {
 const GetArticles = (nextPage) => `
 {
   repository(owner: "weizhanzhan", name: "v_note") {
-    issues(${nextPage} filterBy: {createdBy: "weizhanzhan",states: OPEN}, orderBy: {field: CREATED_AT, direction: DESC}, first: 2) {
+    issues(${nextPage} filterBy: {createdBy: "weizhanzhan",states: OPEN}, orderBy: {field: CREATED_AT, direction: DESC}, first: 10) {
       pageInfo {
         hasNextPage
         endCursor
@@ -177,18 +243,10 @@ function getNotes(nextCursor){
       }))
       resolve({
         articles,
-        endCursor:data.data.repository.issues.pageInfo.endCursor
+        endCursor:data.data.repository.issues.pageInfo.endCursor,
+        hasNextPage:data.data.repository.issues.pageInfo.hasNextPage
       })
-      // if (nextCursor) {
-      //   commit('ADD_ARTICLES', articles)
-      // } else {
-      //   commit('GET_ARTICLES', articles)
-      // }
-      // const { hasNextPage, endCursor } = data.data.repository.issues.pageInfo
-      // if (hasNextPage) {
-      //   await dispatch('getArticlesV4', endCursor)
-      // }
-      // return true
+    
     }else{
       reject({msg:'请求错误'})
     }
@@ -197,7 +255,6 @@ function getNotes(nextCursor){
 
 }
 function handleContent(body){
- 
   return marked(body).match(/<p>(.*?)<\/p>/)[1]
 }
 export default React.memo (Note);

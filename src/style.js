@@ -16,9 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 	time, mark, audio, video {
 		margin: 0;
 		padding: 0;
-		border: 0;
-		font-size: 100%;
-		font: inherit;
+		// border: 0;
 		vertical-align: baseline;
 	}
 	/* HTML5 display-role reset for older browsers */
@@ -37,21 +35,21 @@ export const GlobalStyle = createGlobalStyle`
 	ol, ul {
 		list-style: none;
 	}
-	blockquote, q {
-		quotes: none;
-	}
-	blockquote:before, blockquote:after,
-	q:before, q:after {
-		content: '';
-		content: none;
-	}
+	// blockquote, q {
+	// 	quotes: none;
+	// }
+	// blockquote:before, blockquote:after,
+	// q:before, q:after {
+	// 	content: '';
+	// 	content: none;
+	// }
 	table {
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
 	a {
 		text-decoration: none;
-		color: #fff;
+		// color: #fff;
     }
     #root{
         height:100%;
