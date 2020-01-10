@@ -1,4 +1,5 @@
 ![](http://wzhan.xyz/banner1.jpg "hello")
+<a href="https://vnote.675398552.now.sh/">戳我</a>
 ## Live and learn!
 > 记录分享工作、技术和生活，多多指教~ 🤞 
 
